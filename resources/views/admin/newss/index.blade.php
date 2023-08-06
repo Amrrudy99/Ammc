@@ -77,8 +77,12 @@
                                 {{ $news->view ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $news->published ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $news->published ? 'checked' : '' }}>
+                                <label class="c-switch c-switch-pill c-switch-success">
+                                    <input onchange="update_statuses(this,'published')" value="{{ $news->id }}"
+                                        type="checkbox" class="c-switch-input">
+                                        {{ $news->published ? 'checked' : null }}
+                                    <span class="c-switch-slider"></span>
+                                </label>
                             </td>
                             <td>
                                 @can('news_show')
@@ -159,7 +163,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

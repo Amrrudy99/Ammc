@@ -65,8 +65,12 @@
                                 @endif
                             </td>
                             <td>
-                                <span style="display:none">{{ $slider->published ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $slider->published ? 'checked' : '' }}>
+                                <label class="c-switch c-switch-pill c-switch-success">
+                                    <input onchange="update_statuses(this,'published')" value="{{ $slider->id }}"
+                                        type="checkbox" class="c-switch-input"
+                                        {{ $slider->published ? 'checked' : null }}>
+                                    <span class="c-switch-slider"></span>
+                                </label>
                             </td>
                             <td>
                                 @can('slider_show')
@@ -147,7 +151,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>
