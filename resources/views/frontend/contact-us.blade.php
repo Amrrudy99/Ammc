@@ -15,7 +15,7 @@
                     </div>
                     <div class="media-body">
                         <h5>تواصل معنا</h5>
-                        <h6>88 01234 2345 12</h6>
+                        <h6>{{ $about_us->phone_number}}</h6>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="media-body">
                         <h5>البريد الإلكتروني</h5>
-                        <h6>info@mail.com</h6>
+                        <h6>{{  $about_us->email }}</h6>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="media-body">
                         <h5>العنوان</h5>
-                        <h6>المملكة العربية السعودية</h6>
+                        <h6>{{  $about_us->address }}</h6>
                     </div>
                 </div>
             </div>
@@ -57,35 +57,36 @@
                     <div class="section-title mb-0">
                         <h6 class="sub-title">إبق على تواصل معنا</h6>
 
-                        <form class="mt-4">
+                        <form class="mt-4" action="{{ route('frontend.contact.store') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-inner style-border">
-                                        <input type="text" placeholder="الإسم">
+                                        <input name="name" type="text" placeholder="الإسم">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="single-input-inner style-border">
-                                        <input type="text" placeholder="البريد الإلكتروني">
+                                        <input name="email" type="text" placeholder="البريد الإلكتروني">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="single-input-inner style-border">
-                                        <input type="text" placeholder="الهاتف">
+                                        <input name="phone_number" type="text" placeholder="الهاتف">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="single-input-inner style-border">
-                                        <input type="text" placeholder="عنوان الموضوع">
+                                        <input name="subject" type="text" placeholder="عنوان الموضوع">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="single-input-inner style-border">
-                                        <textarea placeholder="الرسالة"></textarea>
+                                        <textarea name="message" placeholder="الرسالة"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <a class="btn btn-black mt-0 w-100 border-radius-5" href="#">إرسال</a>
+                                    <a type="submit" class="btn btn-black mt-0 w-100 border-radius-5" href="#">إرسال</a>
                                 </div>
                             </div>
                         </form>

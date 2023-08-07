@@ -26,4 +26,6 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     Route::get('various-service', 'VariousServiceController@index')->name('various-service');
     Route::get('gallary', 'GallaryController@index')->name('gallary');
     Route::get('news', 'NewsController@index')->name('news');
+    Route::get('contact', 'ContactController@index')->name('contact');
+    Route::post('contact','ContactController@store')->name('contact.store');
 });

@@ -32,11 +32,11 @@
                         كل ما يتعلق بالالأعمال البحرية فوق سطح الماء وتحت الماء</li>
                 </ul>
             </div>
-            
-            
-            
+
+
+
             <div class="col-lg-6 service-pic-wrap" data-aos="fade-right">
-                <img class="services-img" src="{{asset('frontend/img/services-pic2.jpg')}}">
+                <img class="services-img" src="{{ $service->media }}">
             </div>
         </div>
     </div>

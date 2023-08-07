@@ -10,27 +10,27 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/bootstrap.min.css')}}">
     <!--style css-->
         <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/style.css')}}">
-        
+
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-        
+
     <!---fontawesome--->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/all.css')}}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" >
-        
+
     <!---aos--->
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-        
-        
+
+
     <!---owl-carousel---->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+
     <!--jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!--java scripts-->
         <script src="{{asset('frontend/js/myScript.js')}}"></script>
@@ -68,7 +68,7 @@
                     <li><a class="menu-link" href="{{route('frontend.gallary')}}">معرض الصور</a></li>
                     <li><a class="menu-link" href="{{route('frontend.news')}}">الأخبار</a></li>
 
-                    <li><a class="menu-link" href="contact_us.html">اتصل بنا</a></li>
+                    <li><a class="menu-link" href="{{route('frontend.contact') }}">اتصل بنا</a></li>
                 </ul>
                 <div class="container header-wrap">
                     <div class="header-inner row navbar navbar-default">
@@ -86,9 +86,9 @@
 
               @yield('content')
         @php
-            use App\Models\AboutUs ; 
+            use App\Models\AboutUs ;
             $data = AboutUs::find(1);
-            
+
         @endphp
         <div class="footer">
             <div class="container">
@@ -100,8 +100,7 @@
                     <div class="col-lg-4 col-md-6 multiple-footer-inners">
                         <div class="footer-inner">
                             <img class="footer-icon" src="{{asset('frontend/img/location.png')}}">
-                            <p class="p-footer">شارع الأمير سلطان أمام الآيه 
-                            مول- جده - السعودية</p>
+                            <p class="p-footer">{{  $about_us->location }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 multiple-footer-inners">
@@ -122,7 +121,7 @@
                                 <i class="fa-solid fa-phone footer-icon"></i>
                                 <a class="p-footer"href="tel:00966506666516">(00966) 506666516</a>
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
@@ -135,7 +134,7 @@
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     <!----owl-carousel--->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        
+
     <script>
     $('.owl-one').owlCarousel({
         loop:true,
@@ -159,11 +158,11 @@
     })
     </script>
         <script>
-    AOS.init({ 
+    AOS.init({
         once: 'true',
-        duration: 1000,  
+        duration: 1000,
 
         });
-    </script> 
+    </script>
 </body>
 </html>

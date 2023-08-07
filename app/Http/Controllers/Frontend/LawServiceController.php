@@ -8,15 +8,15 @@ use App\Models\Service;
 
 class LawServiceController extends Controller
 {
-    
+
     public function index()
     {
-        // all services 
-        $services = Service::all();
-        return $services ; 
+        // all services
+        // $services = Service::all();
+        // return $services ;
         // single service
-        $service = Service::where('name','Amanda Haynes')->first(); 
+        $service = Service::where('name','الخدمات القانونية')->first();
         // return $service ;
-        return view('frontend.lawservice', compact('service'));    
+        return view('frontend.lawservice', compact('service'));
     }
 }

@@ -2,7 +2,7 @@
 @section('content')
 <div class="hero-section-inner container">
 
-    <h1 class="page-title">خدمات متنوعة</h1>
+    <h1 class="page-title">{{$service->name}}</h1>
 </div>
 </div>
 
@@ -10,11 +10,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6" data-aos="fade-left">
+                <p class="p-text1">
+                    {{$service->description}}
+                 </p>
                 <ul class="organizations-list">
                     <li>الوساطة في بيع وشراء وتأجير كافة أنواع السفن وعمل العقود لها وإكمال إستلامها </li>
                     <li> إدارة وتشغيل وتطقيم السفن التجارية بأنواعها. </li>
                     <li>تدريب وتأهيل العاملين على الوسائط البحرية والعاملين في الشركات الملاحية والموانئ
-                        وتأهيلهم حسب متطلبات المنظمة البحرية العالمية ((IMO </li>
+                        وتأهيلهم حسب متطلبات المنظمة البحرية العالمية (IMO) </li>
                     <li> أمداد المعلومات والإحصائيات عن المؤسسات البحرية والموانئ البحرية المحلية والإقليمية
                         والعالمية . </li>
                     <li> إصدار النشرات البحرية المتخصصة والأبحاث البحرية الحديثة وتوصيات مؤتمرات النقل البحري
@@ -38,7 +41,7 @@
 
             </div>
             <div class="col-lg-6 service-pic-wrap" data-aos="fade-right">
-                <img class="services-img" src="{{asset('frontend/img/service5-pic.jpg')}}">
+                <img class="services-img" src="{{ $service->media }}">
             </div>
         </div>
     </div>

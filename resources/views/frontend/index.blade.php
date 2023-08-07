@@ -5,14 +5,8 @@
     <div class="owl-one owl-carousel owl-theme owl-container">
         <div class="item item1">
             <!-- <img class="slider-product" src="img/hero-section-bg.jpg">-->
-            <h1 data-aos="fade-up">تواصل معنا للاستفادة من الاستشارات المجانية !</h1>
-            <p data-aos="fade-up">نسعى أن نكون المركز المتخصص الأول لتقديم خدمات إستشارية وتدريبية وإدارية
-                متميزة</p>
-        </div>
-        <div class="item item2">
-            <h1 data-aos="fade-up">تواصل معنا للاستفادة من الاستشارات المجانية !</h1>
-            <p data-aos="fade-up">نسعى أن نكون المركز المتخصص الأول لتقديم خدمات إستشارية وتدريبية وإدارية
-                متميزة</p>
+            <h1 data-aos="fade-up">{{ $slider->name ?? '' }} </h1>
+            <p data-aos="fade-up">{{ $slider->details ?? '' }}</p>
         </div>
     </div>
 </div>
@@ -31,25 +25,25 @@
             <div class="col-lg-3 col-md-6 services-wrap" data-aos="fade-up">
                 <div class="service">
                     <img class="service-icon" src="{{asset('frontend/img/law-services.png')}}">
-                    <a href="#">الخدمات القانونية</a>
+                    <a href="{{ route('frontend.law-service') }}">الخدمات القانونية</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 services-wrap" data-aos="fade-up" data-aos-delay="300">
                 <div class="service">
                     <img class="service-icon" src="{{asset('frontend/img/artistic-services.png')}}">
-                    <a href="#">الخدمات الفنية</a>
+                    <a href="{{ route('frontend.art-service') }}">الخدمات الفنية</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 services-wrap" data-aos="fade-up" data-aos-delay="600">
                 <div class="service">
                     <img class="service-icon" src="{{asset('frontend/img/consaltants-icon.png')}}">
-                    <a href="#">الاستشارات ودراسة الجدوى</a>
+                    <a href="{{ route('frontend.consult-service') }}">الاستشارات ودراسة الجدوى</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 services-wrap" data-aos="fade-up" data-aos-delay="900">
                 <div class="service">
                     <img class="service-icon" src="{{asset('frontend/img/Freen-Shipping-icon-1.png')}}">
-                    <a href="#">خدمات متنوعة</a>
+                    <a href="{{ route('frontend.various-service') }}">خدمات متنوعة</a>
                 </div>
             </div>
 
@@ -77,7 +71,7 @@
                         خبرات و كفاءات عالية من جنسيات مختلفة لتقديم أفضل الخدمات وبجودة عالية.
                     </p>
 
-                    <a class="btn more-btn shadow-none grow">المزيــد</a>
+                    <a class="btn more-btn shadow-none grow" href="{{ route('frontend.aboutfounder') }}">المزيــد</a>
                 </div>
             </div>
         </div>
@@ -133,23 +127,25 @@
                 <br>
                 وهم شركاء حقيقيون يهتمون بنجاحك. يقدم فريقنا نهجًا استشاريًا حول القانون البحري.
             </h6>
-            <a href="tel:123456789" class="btn more-btn shadow-none grow">اتصل الآن</a>
+
+            <a href="{{ route('frontend.contact') }}" class="btn more-btn shadow-none grow">اتصل الآن</a>
         </div>
     </div>
 </div>
 
-<div class="news-section">
+{{-- <div class="news-section">
     <div class="container">
         <h4 class="green-title" data-aos="fade-up">الأخبــار والمقــــالات </h4>
         <div class="row">
+             @foreach ($news->image as $key => $media)
             <div class="col-lg-4 col-md-12 news-wrap" data-aos="fade-up">
                 <div class="news-div">
-                    <img class="news-thumbnail" src="{{asset('frontend/img/news-thumbnail1.png')}}">
+                    <img class="news-thumbnail" src="{{ $media->getUrl() }}" />
                     <div class="date-views">
                         <i class="fa-solid fa-calendar-days date-veiws-icon"></i>
-                        <p class="date">22/02/020</p>
+                        <p class="date">{{ $news->date }}</p>
                         <i class="fa-solid fa-eye date-veiws-icon"></i>
-                        <p class="views-number">22</p>
+                        <p class="views-number">{{  $news->views }}</p>
                     </div>
                     <h5 class="news-title">شحوط السفينة العملاقة مسؤولية من</h5>
                     <p class="news-text">ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل
@@ -158,40 +154,9 @@
                     <a class="more-news" href="#"><i class="fa-solid fa-circle-plus more-news-icon"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 news-wrap" data-aos="fade-up">
-                <div class="news-div">
-                    <img class="news-thumbnail" src="{{asset('frontend/img/news-thumbnail2.png')}}">
-                    <div class="date-views">
-                        <i class="fa-solid fa-calendar-days date-veiws-icon"></i>
-                        <p class="date">22/02/020</p>
-                        <i class="fa-solid fa-eye date-veiws-icon"></i>
-                        <p class="views-number">22</p>
-                    </div>
-                    <h5 class="news-title">التطوع .. يعزز روح التعاون والعطاء</h5>
-                    <p class="news-text">ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل
-                        الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث ع</p>
-
-                    <a class="more-news" href="#"><i class="fa-solid fa-circle-plus more-news-icon"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 news-wrap" data-aos="fade-up">
-                <div class="news-div">
-                    <img class="news-thumbnail" src="{{asset('frontend/img/news-thumbnail3.png')}}">
-                    <div class="date-views">
-                        <i class="fa-solid fa-calendar-days date-veiws-icon"></i>
-                        <p class="date">22/02/020</p>
-                        <i class="fa-solid fa-eye date-veiws-icon"></i>
-                        <p class="views-number">22</p>
-                    </div>
-                    <h5 class="news-title">مارلوج 10 .. توصيات تواجه التحديات في النقل البحري والموانئ</h5>
-                    <p class="news-text">ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل
-                        الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث ع</p>
-
-                    <a class="more-news" href="#"><i class="fa-solid fa-circle-plus more-news-icon"></i></a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
