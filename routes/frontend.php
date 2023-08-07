@@ -3,19 +3,27 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', 'Frontend\HomeController@index')->name('home');
+
+// {{route('frontend.about')}}
+// {{route('frontend.aboutfounder')}}
+// {{route('frontend.law-service')}}
+// {{route('frontend.art-service')}}
+// {{route('frontend.consult-service')}}
+// {{route('frontend.various-service')}}
+// {{route('frontend.gallery')}}
+// {{route('frontend.news')}}
 
 
 
-// Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
+Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
 
-//     Route::get('aboutus', 'HomeController@aboutus')->name('aboutus');
-//     Route::get('contact', 'HomeController@contact')->name('contact');
-//     Route::post('contact','HomeController@store')->name('contact.store');
-//     Route::get('request_service', 'HomeController@request_service')->name('request_service');
-//     Route::post('request_service', 'HomeController@store_request_service')->name('request_service.store');
-//     Route::get('project/{id}', 'HomeController@project')->name('project');
-//     Route::get('projects', 'HomeController@projects')->name('projects');
-//     Route::get('service/{id}', 'HomeController@service')->name('service');
-//     Route::get('services', 'HomeController@services')->name('services');
-// });
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('about', 'AboutController@index')->name('about');
+    Route::get('about-founder', 'AboutFounderController@index')->name('aboutfounder');
+    Route::get('law-service', 'LawServiceController@index')->name('law-service');
+    Route::get('art-service', 'ArtServiceController@index')->name('art-service');
+    Route::get('consult-service', 'ConsultServiceController@index')->name('consult-service');
+    Route::get('various-service', 'VariousServiceController@index')->name('various-service');
+    Route::get('gallary', 'GallaryController@index')->name('gallary');
+    Route::get('news', 'NewsController@index')->name('news');
+});
