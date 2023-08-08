@@ -66,8 +66,8 @@ return [
         ],
     ],
     'service' => [
-        'title'          => 'Services',
-        'title_singular' => 'Service',
+        'title'          => 'الخدمات',
+        'title_singular' => 'الخدمات',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
@@ -86,8 +86,8 @@ return [
         ],
     ],
     'news' => [
-        'title'          => 'News',
-        'title_singular' => 'News',
+        'title'          => 'الاخبار',
+        'title_singular' => 'الاخبار',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
