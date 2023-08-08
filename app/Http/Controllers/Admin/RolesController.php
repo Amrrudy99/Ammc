@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -34,9 +35,9 @@ class RolesController extends Controller
 
     public function store(StoreRoleRequest $request)
     {
-        $role = Role::create($request->all());
-        $role->permissions()->sync($request->input('permissions', []));
-
+        // $role = Role::create($request->all());
+        // $role->permissions()->sync($request->input('permissions', []));
+        Alert::warning(' Not Allowed', 'You cannot add a role please call the Application Developer');
         return redirect()->route('admin.roles.index');
     }
 
@@ -53,9 +54,9 @@ class RolesController extends Controller
 
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        $role->update($request->all());
-        $role->permissions()->sync($request->input('permissions', []));
-
+        // $role->update($request->all());
+        // $role->permissions()->sync($request->input('permissions', []));
+        Alert::warning(' Not Allowed', 'You cannot update a role please call the Application Developer');
         return redirect()->route('admin.roles.index');
     }
 
@@ -71,9 +72,8 @@ class RolesController extends Controller
     public function destroy(Role $role)
     {
         abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $role->delete();
-
+        // $role->delete();
+        Alert::warning(' Not Allowed', 'You cannot delete a role please call the Application Developer');
         return back();
     }
 

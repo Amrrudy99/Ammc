@@ -9,6 +9,7 @@ use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\News;
 use Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,11 +49,11 @@ class NewsController extends Controller
         return redirect()->route('admin.newss.index');
     }
 
-    public function edit(News $news)
+    public function edit(News $newss)
     {
         abort_if(Gate::denies('news_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.newss.edit', compact('news'));
+        return view('admin.newss.edit', compact('newss'));
     }
 
     public function update(UpdateNewsRequest $request, News $news)

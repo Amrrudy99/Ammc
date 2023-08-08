@@ -9,59 +9,64 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.newss.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.news.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.news.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.news.fields.description') }}</label>
-                <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', '') }}">
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.news.fields.description_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="image">{{ trans('cruds.news.fields.image') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
+            <div class="row justify-content-between">
+                <div class="form-group col-4">
+                    <label class="required" for="name">{{ trans('cruds.news.fields.name') }}</label>
+                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                    @if($errors->has('name'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('name') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.news.fields.name_helper') }}</span>
                 </div>
-                @if($errors->has('image'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('image') }}
+                <div class="form-group col-4">
+                    <label for="description">{{ trans('cruds.news.fields.description') }}</label>
+                    <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', '') }}">
+                    @if($errors->has('description'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('description') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.news.fields.description_helper') }}</span>
+                </div>
+                <div class="form-group col-4">
+                    <label class="required" for="image">{{ trans('cruds.news.fields.image') }}</label>
+                    <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.news.fields.image_helper') }}</span>
+                    @if($errors->has('image'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('image') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.news.fields.image_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="date">{{ trans('cruds.news.fields.date') }}</label>
-                <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" name="date" id="date" value="{{ old('date') }}">
-                @if($errors->has('date'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('date') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.news.fields.date_helper') }}</span>
+            <div class="row justify-content-evenly">
+                <div class="form-group col-5">
+                    <label for="date">{{ trans('cruds.news.fields.date') }}</label>
+                    <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" name="date" id="date" value="{{ old('date') }}">
+                    @if($errors->has('date'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('date') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.news.fields.date_helper') }}</span>
+                </div>
+                <div class="form-group col-5">
+                    <label for="view">{{ trans('cruds.news.fields.view') }}</label>
+                    <input class="form-control {{ $errors->has('view') ? 'is-invalid' : '' }}" type="number" name="view" id="view" value="{{ old('view', '') }}" step="1">
+                    @if($errors->has('view'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('view') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.news.fields.view_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="view">{{ trans('cruds.news.fields.view') }}</label>
-                <input class="form-control {{ $errors->has('view') ? 'is-invalid' : '' }}" type="number" name="view" id="view" value="{{ old('view', '') }}" step="1">
-                @if($errors->has('view'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('view') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.news.fields.view_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+            
+            <div class="form-group row justify-content-center">
+                <button class="btn btn-danger col-4" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

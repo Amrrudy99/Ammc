@@ -9,39 +9,44 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.sliders.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="name">{{ trans('cruds.slider.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}">
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="details">{{ trans('cruds.slider.fields.details') }}</label>
-                <input class="form-control {{ $errors->has('details') ? 'is-invalid' : '' }}" type="text" name="details" id="details" value="{{ old('details', '') }}">
-                @if($errors->has('details'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('details') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.details_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="image">{{ trans('cruds.slider.fields.image') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
+            <div class="row justify-content-between">
+                <div class="form-group col-6">
+                    <label for="name">{{ trans('cruds.slider.fields.name') }}</label>
+                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}">
+                    @if($errors->has('name'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('name') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.name_helper') }}</span>
                 </div>
-                @if($errors->has('image'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('image') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.image_helper') }}</span>
+                <div class="form-group col-6">
+                    <label for="details">{{ trans('cruds.slider.fields.details') }}</label>
+                    <input class="form-control {{ $errors->has('details') ? 'is-invalid' : '' }}" type="text" name="details" id="details" value="{{ old('details', '') }}">
+                    @if($errors->has('details'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('details') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.details_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+            <div class="row justify-content-center">
+                <div class="form-group col-8">
+                    <label class="required" for="image">{{ trans('cruds.slider.fields.image') }}</label>
+                    <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
+                    </div>
+                    @if($errors->has('image'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('image') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.image_helper') }}</span>
+                </div>
+            </div>
+            
+            <div class="form-group row justify-content-center ">
+                <button class="btn btn-danger col-4" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

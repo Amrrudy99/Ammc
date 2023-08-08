@@ -9,6 +9,7 @@ use App\Http\Requests\StoreAboutUsRequest;
 use App\Http\Requests\UpdateAboutUsRequest;
 use App\Models\AboutUs;
 use Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,15 +49,15 @@ class AboutUsController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $aboutUs->id]);
         }
-
+        Alert::success(trans('flash.store.success_title'),trans('flash.store.success_body'));
         return redirect()->route('admin.about-uss.index');
     }
 
-    public function edit(AboutUs $aboutUs)
+    public function edit(AboutUs $about_uss)
     {
         abort_if(Gate::denies('about_us_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.aboutUss.edit', compact('aboutUs'));
+        return view('admin.aboutUss.edit', compact('about_uss'));
     }
 
     public function update(UpdateAboutUsRequest $request, AboutUs $aboutUs)
@@ -87,7 +88,7 @@ class AboutUsController extends Controller
                 $aboutUs->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('gallery');
             }
         }
-
+        Alert::success(trans('flash.update.success_title'),trans('flash.update.success_body'));
         return redirect()->route('admin.about-uss.index');
     }
 
@@ -103,7 +104,7 @@ class AboutUsController extends Controller
         abort_if(Gate::denies('about_us_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $aboutUs->delete();
-
+        Alert::success(trans('flash.destroy.success_title'),trans('flash.store.success_body'));
         return back();
     }
 

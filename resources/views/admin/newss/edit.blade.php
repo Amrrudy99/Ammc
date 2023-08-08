@@ -7,12 +7,12 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.newss.update", [$news->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.newss.update", [$newss->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.news.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $news->name) }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $newss->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="description">{{ trans('cruds.news.fields.description') }}</label>
-                <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', $news->description) }}">
+                <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', $newss->description) }}">
                 @if($errors->has('description'))
                     <div class="invalid-feedback">
                         {{ $errors->first('description') }}
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="date">{{ trans('cruds.news.fields.date') }}</label>
-                <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" name="date" id="date" value="{{ old('date', $news->date) }}">
+                <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" name="date" id="date" value="{{ old('date', $newss->date) }}">
                 @if($errors->has('date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date') }}
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label for="view">{{ trans('cruds.news.fields.view') }}</label>
-                <input class="form-control {{ $errors->has('view') ? 'is-invalid' : '' }}" type="number" name="view" id="view" value="{{ old('view', $news->view) }}" step="1">
+                <input class="form-control {{ $errors->has('view') ? 'is-invalid' : '' }}" type="number" name="view" id="view" value="{{ old('view', $newss->view) }}" step="1">
                 @if($errors->has('view'))
                     <div class="invalid-feedback">
                         {{ $errors->first('view') }}
@@ -102,8 +102,8 @@
       }
     },
     init: function () {
-@if(isset($news) && $news->image)
-      var file = {!! json_encode($news->image) !!}
+@if(isset($news) && $newss->image)
+      var file = {!! json_encode($newss->image) !!}
           this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
       file.previewElement.classList.add('dz-complete')

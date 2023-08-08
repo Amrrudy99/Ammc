@@ -10,7 +10,7 @@ return [
         'success_body' => '',
     ],
     'destroy'   => [
-        'success_title' => 'Destroyed',
+        'success_title' => 'Deleted',
         'success_body' => '',
     ],
 

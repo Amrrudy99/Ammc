@@ -8,6 +8,7 @@ use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use App\Models\Permission;
 use Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,8 +32,8 @@ class PermissionsController extends Controller
 
     public function store(StorePermissionRequest $request)
     {
-        $permission = Permission::create($request->all());
-
+        //$permission = Permission::create($request->all());
+        Alert::warning('Permission Not Allowed', 'You cannot add a permission  please call the Application Developer');
         return redirect()->route('admin.permissions.index');
     }
 
@@ -45,8 +46,8 @@ class PermissionsController extends Controller
 
     public function update(UpdatePermissionRequest $request, Permission $permission)
     {
-        $permission->update($request->all());
-
+        // $permission->update($request->all());
+        Alert::warning('Permission Not Allowed', 'You cannot update a permission  please call the Application Developer');
         return redirect()->route('admin.permissions.index');
     }
 
@@ -61,8 +62,8 @@ class PermissionsController extends Controller
     {
         abort_if(Gate::denies('permission_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permission->delete();
-
+        // $permission->delete();
+        Alert::warning('Permission Not Allowed', 'You cannot delete a permission  please call the Application Developer');
         return back();
     }
 

@@ -87,7 +87,7 @@
               @yield('content')
         @php
             use App\Models\AboutUs ;
-            $data = AboutUs::find(1);
+            $about_us = AboutUs::find(1);
 
         @endphp
         <div class="footer">
@@ -100,7 +100,7 @@
                     <div class="col-lg-4 col-md-6 multiple-footer-inners">
                         <div class="footer-inner">
                             <img class="footer-icon" src="{{asset('frontend/img/location.png')}}">
-                            <p class="p-footer">{{  $about_us->location }}</p>
+                            <p class="p-footer">{{ $about_us->location }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 multiple-footer-inners">
