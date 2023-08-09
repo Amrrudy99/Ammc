@@ -16,7 +16,7 @@ class HomeController extends Controller
 
         $sliders = Slider::where('published',1)->get();
         $about_us = AboutUs::first();
-        $news = News::where('published',1)->orderBy('created_at','desc')->take(10)->get();
+        $news = News::with('media')->where('published',1)->orderBy('created_at','desc')->take(10)->get();
         $contact = Contact::all();
         return view('frontend.index',compact('sliders', 'about_us', 'news' , 'contact'));
     }

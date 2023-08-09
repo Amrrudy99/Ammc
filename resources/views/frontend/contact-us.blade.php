@@ -48,7 +48,6 @@
 <div class="contact-area">
     <div class="container">
         <div class="contact-inner-1">
-
             <div class="row">
                 <div class="col-lg-8">
                     <img class="w-100" src="{{asset('frontend/img/4.png')}}" alt="img">
@@ -56,9 +55,9 @@
                 <div class="col-lg-4">
                     <div class="section-title mb-0">
                         <h6 class="sub-title">إبق على تواصل معنا</h6>
-
-                        <form class="mt-4" action="{{ route('frontend.contact.store') }}" method="POST">
-                            @csrf
+                        <form method="POST" action="{{ route('frontend.contact.store') }}"  enctype="multipart/form-data" class="mt-4" >
+                        @csrf
+                        
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-inner style-border">
@@ -86,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <a type="submit" class="btn btn-black mt-0 w-100 border-radius-5" href="#">إرسال</a>
+                                    <button  class="btn btn-black mt-0 w-100 border-radius-5" type="submit"> ارسال</button>
                                 </div>
                             </div>
                         </form>

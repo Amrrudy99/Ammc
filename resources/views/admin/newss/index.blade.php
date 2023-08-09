@@ -79,8 +79,8 @@
                             <td>
                                 <label class="c-switch c-switch-pill c-switch-success">
                                     <input onchange="update_statuses(this,'published')" value="{{ $news->id }}"
-                                        type="checkbox" class="c-switch-input">
-                                        {{ $news->published ? 'checked' : null }}
+                                    type="checkbox" class="c-switch-input"
+                                    {{ $news->published ? 'checked' : null }}>
                                     <span class="c-switch-slider"></span>
                                 </label>
                             </td>
@@ -104,9 +104,7 @@
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
-
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -121,6 +119,21 @@
 @section('scripts')
 @parent
 <script>
+    function update_statuses(el,column_name){
+    if(el.checked){
+      var status = 1;
+    }
+    else{
+      var status = 0;
+    }
+    $.post('{{ route('admin.newss.update_statuses') }}', {_token:'{{ csrf_token() }}', id:el.value, published:status, column_name:column_name}, function(data){
+      if(data == 1){
+        showAlert('success', 'Success', '');
+      }else{
+        showAlert('danger', 'Something went wrong', '');
+      }
+    });
+  }
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('news_delete')

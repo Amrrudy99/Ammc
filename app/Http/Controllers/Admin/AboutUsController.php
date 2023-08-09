@@ -60,32 +60,32 @@ class AboutUsController extends Controller
         return view('admin.aboutUss.edit', compact('about_uss'));
     }
 
-    public function update(UpdateAboutUsRequest $request, AboutUs $aboutUs)
+    public function update(UpdateAboutUsRequest $request, AboutUs $about_uss)
     {
-        $aboutUs->update($request->all());
+        $about_uss->update($request->all());
 
         if ($request->input('aboutus_image', false)) {
-            if (! $aboutUs->aboutus_image || $request->input('aboutus_image') !== $aboutUs->aboutus_image->file_name) {
-                if ($aboutUs->aboutus_image) {
-                    $aboutUs->aboutus_image->delete();
+            if (! $about_uss->aboutus_image || $request->input('aboutus_image') !== $about_uss->aboutus_image->file_name) {
+                if ($about_uss->aboutus_image) {
+                    $about_uss->aboutus_image->delete();
                 }
-                $aboutUs->addMedia(storage_path('tmp/uploads/' . basename($request->input('aboutus_image'))))->toMediaCollection('aboutus_image');
+                $about_uss->addMedia(storage_path('tmp/uploads/' . basename($request->input('aboutus_image'))))->toMediaCollection('aboutus_image');
             }
-        } elseif ($aboutUs->aboutus_image) {
-            $aboutUs->aboutus_image->delete();
+        } elseif ($about_uss->aboutus_image) {
+            $about_uss->aboutus_image->delete();
         }
 
-        if (count($aboutUs->gallery) > 0) {
-            foreach ($aboutUs->gallery as $media) {
+        if (count($about_uss->gallery) > 0) {
+            foreach ($about_uss->gallery as $media) {
                 if (! in_array($media->file_name, $request->input('gallery', []))) {
                     $media->delete();
                 }
             }
         }
-        $media = $aboutUs->gallery->pluck('file_name')->toArray();
+        $media = $about_uss->gallery->pluck('file_name')->toArray();
         foreach ($request->input('gallery', []) as $file) {
             if (count($media) === 0 || ! in_array($file, $media)) {
-                $aboutUs->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('gallery');
+                $about_uss->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('gallery');
             }
         }
         Alert::success(trans('flash.update.success_title'),trans('flash.update.success_body'));

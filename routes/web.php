@@ -36,11 +36,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('newss/media', 'NewsController@storeMedia')->name('newss.storeMedia');
     Route::post('newss/ckmedia', 'NewsController@storeCKEditorImages')->name('newss.storeCKEditorImages');
     Route::resource('newss', 'NewsController');
+    Route::post('newss/update_statuses', 'NewsController@update_statuses')->name('newss.update_statuses');
 
     // Sliders
     Route::delete('sliders/destroy', 'SlidersController@massDestroy')->name('sliders.massDestroy');
     Route::post('sliders/media', 'SlidersController@storeMedia')->name('sliders.storeMedia');
     Route::post('sliders/ckmedia', 'SlidersController@storeCKEditorImages')->name('sliders.storeCKEditorImages');
+    Route::post('sliders/update_statuses', 'SlidersController@update_statuses')->name('sliders.update_statuses');
     Route::resource('sliders', 'SlidersController');
 
     // About Us

@@ -34,6 +34,7 @@
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!--java scripts-->
         <script src="{{asset('frontend/js/myScript.js')}}"></script>
+        
 </head>
 
 <body>
@@ -78,7 +79,7 @@
                             </a>
                         </div>
                         <div class="col-6 logo-container">
-                            <a href="index.html"><img class="logo" src="{{asset('frontend/img/logo-light.png')}}"></a>
+                            <a href="{{route('frontend.home')}}"><img class="logo" src="{{asset('frontend/img/logo-light.png')}}"></a>
                         </div>
                     </div>
                 </div>
@@ -115,11 +116,11 @@
                     <div class="col-lg-4 col-md-6 multiple-footer-inners">
                         <div class="footer-inner">
                                 <img class="footer-icon" src="{{asset('frontend/img/email.png')}}">
-                                <a class="p-footer" href="mailto:info@theammc.com">{{$data->email}}</a>
+                                <a class="p-footer" href="mailto:info@theammc.com">{{$about_us->email}}</a>
                         </div>
                         <div class="footer-inner">
                                 <i class="fa-solid fa-phone footer-icon"></i>
-                                <a class="p-footer"href="tel:00966506666516">(00966) 506666516</a>
+                                <a class="p-footer"href="tel:00966506666516">{{$about_us->phone_number}}</a>
                         </div>
 
                     </div>

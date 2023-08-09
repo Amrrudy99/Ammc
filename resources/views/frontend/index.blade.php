@@ -3,11 +3,12 @@
 
 <div class="hero-section-inner">
     <div class="owl-one owl-carousel owl-theme owl-container">
+        @foreach ($sliders as $slider)
         <div class="item item1">
-            <!-- <img class="slider-product" src="img/hero-section-bg.jpg">-->
-            <h1 data-aos="fade-up">{{ $slider->name ?? '' }} </h1>
-            <p data-aos="fade-up">{{ $slider->details ?? '' }}</p>
+            <h1 data-aos="fade-up">{{$slider->name}}</h1>
+            <p data-aos="fade-up">{{$slider->details}}</p>
         </div>
+        @endforeach
     </div>
 </div>
 
@@ -133,30 +134,30 @@
     </div>
 </div>
 
-{{-- <div class="news-section">
+<div class="news-section">
     <div class="container">
         <h4 class="green-title" data-aos="fade-up">الأخبــار والمقــــالات </h4>
         <div class="row">
-             @foreach ($news->image as $key => $media)
+            @foreach ($news as $new)
             <div class="col-lg-4 col-md-12 news-wrap" data-aos="fade-up">
                 <div class="news-div">
-                    <img class="news-thumbnail" src="{{ $media->getUrl() }}" />
+                    <img class="news-thumbnail" src="{{ $new->image->getUrl() }}" />
                     <div class="date-views">
                         <i class="fa-solid fa-calendar-days date-veiws-icon"></i>
-                        <p class="date">{{ $news->date }}</p>
+                        <p class="date">{{ $new->date }}</p>
                         <i class="fa-solid fa-eye date-veiws-icon"></i>
-                        <p class="views-number">{{  $news->views }}</p>
+                        <p class="views-number">{{ $new->views }}</p>
                     </div>
-                    <h5 class="news-title">شحوط السفينة العملاقة مسؤولية من</h5>
-                    <p class="news-text">ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل
-                        الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث ع</p>
-
+                    <h5 class="news-title">{{$new->name}}</h5>
+                    <p class="news-text">
+                        <?php echo nl2br($new->description); ?>
+                    </p>
                     <a class="more-news" href="#"><i class="fa-solid fa-circle-plus more-news-icon"></i></a>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
-</div> --}}
+</div>
 
 @endsection

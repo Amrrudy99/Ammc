@@ -172,11 +172,6 @@
                     <span class="help-block">{{ trans('cruds.aboutUs.fields.aboutus_image_helper') }}</span>
                 </div>
             </div>
-
-            
-            
-            
-            
             <div class="form-group row justify-content-center">
                 <button class="btn btn-danger col-4" type="submit">
                     {{ trans('global.save') }}
@@ -218,7 +213,7 @@
       }
     },
     init: function () {
-@if(isset($aboutUs) && $about_uss->aboutus_image)
+@if(isset($about_uss) && $about_uss->aboutus_image)
       var file = {!! json_encode($about_uss->aboutus_image) !!}
           this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
@@ -277,7 +272,7 @@ Dropzone.options.galleryDropzone = {
       $('form').find('input[name="gallery[]"][value="' + name + '"]').remove()
     },
     init: function () {
-@if(isset($aboutUs) && $about_uss->gallery)
+@if(isset($about_uss) && $about_uss->gallery)
       var files = {!! json_encode($about_uss->gallery) !!}
           for (var i in files) {
           var file = files[i]

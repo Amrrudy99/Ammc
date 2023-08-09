@@ -12,28 +12,40 @@ class NewsSeeder extends Seeder
     public function run()
     {
         $news1 = News::create([
-            'name' => 'Sample News 1',
-            'description' => 'This is the first sample news article.',
+            'name' => 'شحوط السفينة العملاقة مسؤولية من ',
+            'description' => 'ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث ع',
             'date' => Carbon::now()->format(config('panel.date_format')),
             'view' => rand(0 , 100),
             'published' => false,
         ]);
 
         // Attach images to the first news article using Spatie Media Library
-        $news1->addMediaFromUrl( 'http://127.0.0.1:8000'. asset('frontend/img/4.png'))->toMediaCollection('image');
+        $news1->addMediaFromUrl( 'http://127.0.0.1:8000'. asset('frontend/img/news-thumbnail1.png'))->toMediaCollection('image');
         
         // Add more News records with images as needed...
 
-        // $news2 = News::create([
-        //     'name' => 'Sample News 2',
-        //     'description' => 'This is the second sample news article.',
-        //     'date' => Carbon::now(),
-        //     'view' => 150,
-        //     'published' => true,
-        // ]);
+        $news2 = News::create([
+            'name' => 'التطوع .. يعزز روح التعاون والعطاء',
+            'description' => 'ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث ع',
+            'date' => Carbon::now()->format(config('panel.date_format')),
+            'view' => rand(0 , 100),
+            'published' => false,
+        ]);
 
-        // // Attach images to the second news article using Spatie Media Library
-        // $news2->addMediaFromUrl("http://example.com/path_to_your_image.jpg")->toMediaCollection('image');
+        // Attach images to the second news article using Spatie Media Library
+        $news2->addMediaFromUrl('http://127.0.0.1:8000'. asset('frontend/img/news-thumbnail2.png'))->toMediaCollection('image');
+
+
+        $news3 = News::create([
+            'name' => 'مارلوج 10 .. توصيات تواجه التحديات في النقل البحري والموانئ',
+            'description' => 'ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث ع',
+            'date' => Carbon::now()->format(config('panel.date_format')),
+            'view' => rand(0 , 100),
+            'published' => false,
+        ]);
+
+        // Attach images to the second news article using Spatie Media Library
+        $news3->addMediaFromUrl('http://127.0.0.1:8000'. asset('frontend/img/news-thumbnail3.png'))->toMediaCollection('image');
     }
 }
 
